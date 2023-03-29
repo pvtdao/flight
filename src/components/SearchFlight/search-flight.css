@@ -2,6 +2,80 @@
 @tailwind components;
 @tailwind utilities;
 
-.search-flight-container{
-    @apply w-full h-[224px] rounded-xl relative;
+.search-flight {
+    @apply w-full min-h-[224px] rounded-xl relative px-[30px] pt-[30px] py-[50px] bg-white;
+    box-shadow: 0px 4px 30px rgba(77, 70, 250, 0.1);
+}
+
+.type-flight label {
+    font-family: 'BiennaleBold';
+}
+
+.select-amount {
+    font-family: 'BiennaleBold';
+}
+
+.select-class-seat {
+    font-family: 'BiennaleBold';
+}
+
+.select-option{
+    @apply select-none rounded-xl w-full px-4 py-3 cursor-pointer flex items-center gap-2 justify-between hover:bg-primary/[.5];
+}
+
+.select-option.amount{
+    @apply hover:bg-white;
+}
+
+input[type="number"]{
+    background: transparent;
+}
+
+.select-option.active{
+    @apply bg-primary/[.5];
+}
+
+.info-flight{
+    font-family: 'BiennaleBold';
+}
+
+.card-place{
+    @apply h-[100px] w-full pt-[15px] pb-3 px-5 flex flex-col rounded-xl bg-white cursor-pointer
+        lg:w-[300px];
+}
+
+.card-date{
+
+}
+
+.react-calendar{
+    font-size: 16px;
+    width: 250px;
+    font-family: 'BiennaleBold';
+    border: 1px solid rgba(0, 0, 0,.1);
+    border-radius: 12px
+}
+
+.react-calendar__year-view__months{
+    font-size: 14px;
+}
+
+.react-calendar__month-view__weekdays{
+    border-bottom: 1px solid rgba(0, 0, 0,.2);
+}
+.react-calendar__navigation__label__labelText{
+    font-size: 14px;
+}
+
+.react-calendar__month-view__weekdays__weekday{
+}
+
+abbr:where([title]){
+    text-decoration: none !important;
+}
+
+.react-calendar__tile--active{
+    background: rgb(77, 70, 250) !important;
+}
+.react-calendar__tile .react-calendar__tile--now .react-calendar__tile--active{
 }

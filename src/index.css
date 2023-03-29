@@ -12,46 +12,41 @@
     font-family: Biennale;
 }
 
-@layer base {
+@font-face {
+    font-family: BiennaleBold;
+    src: url('./assets/fonts/Biennale/Biennale\ Bold.otf');
+}
+@font-face {
+    font-family: Biennale;
+    src: url('./assets/fonts/Biennale/Biennale\ Book.otf'),
+}
+@font-face {
+    font-family: BiennaleLight300;
+    src: url('./assets/fonts/Biennale/Biennale\ Light.otf');
+}
+@font-face {
+    font-family: BiennaleHeavy800;
+    src: url('./assets/fonts/Biennale/Biennale\ Heavy.otf');
+}
+@font-face {
+    font-family: BiennaleSemi600;
+    src: url('./assets/fonts/Biennale/Biennale\ SemiBold.otf');
+}
+@font-face {
+    font-family: BiennaleRegular400;
+    src: url('./assets/fonts/Biennale/Biennale\ Regular.otf');
+}
+@font-face {
+    font-family: BiennaleMedium500;
+    src: url('./assets/fonts/Biennale/Biennale\ Medium.otf');
+}
+@font-face {
+    font-family: BiennaleLight300;
+    src: url('./assets/fonts/Biennale/Biennale\ Light.otf');
+}
 
-    @font-face {
-        font-family: BiennaleBold;
-        src: url('./assets/fonts/Biennale/Biennale\ Bold.otf');
-    }
-
-    @font-face {
-        font-family: Biennale;
-        src: url('./assets/fonts/Biennale/Biennale\ Book.otf'),
-    }
-
-    @font-face {
-        font-family: BiennaleLight300;
-        src: url('./assets/fonts/Biennale/Biennale\ Light.otf');
-    }
-
-    @font-face {
-        font-family: BiennaleHeavy800;
-        src: url('./assets/fonts/Biennale/Biennale\ Heavy.otf');
-    }
-
-    @font-face {
-        font-family: BiennaleSemi600;
-        src: url('./assets/fonts/Biennale/Biennale\ SemiBold.otf');
-    }
-
-    @font-face {
-        font-family: BiennaleRegular400;
-        src: url('./assets/fonts/Biennale/Biennale\ Regular.otf');
-    }
-
-    @font-face {
-        font-family: BiennaleMedium500;
-        src: url('./assets/fonts/Biennale/Biennale\ Medium.otf');
-    }
-
-    @font-face {
-        font-family: BiennaleLight300;
-        src: url('./assets/fonts/Biennale/Biennale\ Light.otf');
-    }
-
+input[type="radio"]{
+    accent-color: #4D46FA;
+    width: 24px;
+    height: 24px;
 }

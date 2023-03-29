@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.header-container {
+    @apply mx-auto flex justify-between;
+    font-family: 'BiennaleLight300';
+}
+
+.logo {
+    @apply flex flex-col md:flex-row md:items-center md:gap-3.5;
+    font-family: "BiennaleHeavy800";
+}
+
+.menu {
+    @apply absolute bg-primary overflow-hidden tracking-widest
+    flex flex-col items-center justify-center gap-[15px] text-white
+    lg:bg-transparent lg:relative lg:flex-row lg:tracking-normal lg:text-black;
+    font-family: BiennaleRegular400;
+    transition-property: height;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: .8s;
+}
+
+.menu-active {
+    @apply h-screen top-0 w-screen right-0 
+        lg:h-auto lg:top-auto lg:w-auto lg:right-auto
+    ;
+}
+
+.menu-inactive {
+    @apply w-screen right-0 h-0 -top-[130%] 
+        lg:w-auto lg:right-auto lg:h-auto;
+}
+
+.menu-item {
+    @apply flex items-center text-xl hover:underline rounded-xl
+        lg:text-sm lg:h-full lg:hover:bg-primary/[.1];
+    transition: all .3s ease-in-out;
+}
+
+.booking {
+    font-family: "BiennaleSemi600";
+    @apply text-white bg-primary rounded-xl py-[8px] px-3 md:py-[10px] md:px-4 text-[12px] md:text-sm;
+}

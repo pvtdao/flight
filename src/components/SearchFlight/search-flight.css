@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.search-flight-container{
+    @apply w-full h-[224px] rounded-xl relative;
+}

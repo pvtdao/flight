@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.hero{
+    @apply h-[800px] bg-cover md:bg-center relative;
+    background-image: url("../../assets/images/thumbnail.jpg");
+}
+
+.content{
+    @apply relative top-1/4;
+}
+
+.content-text{
+    @apply text-[50px] leading-[80px]
+        md:text-[72px] md:leading-[105px];
+    font-family: BiennaleLight300;
+}
+
+.content-text span{
+    font-family: BiennaleBold;
+}

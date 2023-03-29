@@ -20,12 +20,12 @@ function SearchFlight() {
         from: {
             shorten: "DAD",
             place: "Da Nang",
-            location: "Quang Nam, Viet Nam"
+            location: "Viet Nam"
         },
         to: {
-            shorten: "SGN",
-            place: "Ho Chi Minh",
-            location: "Viet Nam"
+            shorten: "",
+            place: "",
+            location: ""
         },
         depart: new Date(),
         return: new Date()

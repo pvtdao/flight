@@ -3,11 +3,8 @@ import { useFormContext, useWatch } from 'react-hook-form'
 import { RiArrowDownSFill, RiArrowUpSFill } from "react-icons/ri";
 
 function SelectAmount({ index, setIndexActive, indexActive }) {
-    const { formState: { defaultValues }, setValue, control } = useFormContext()
-    const { amount } = defaultValues
-
+    const { control, setValue, getValues } = useFormContext()
     const amountWatch = useWatch({ control, name: 'amount' })
-    console.log("🚀 ~ file: SelectAmount.jsx:10 ~ SelectAmount ~ amountWatch:", amountWatch)
 
     const isOpen = useMemo(() => {
         return indexActive === index ? true : false
@@ -17,15 +14,35 @@ function SelectAmount({ index, setIndexActive, indexActive }) {
         return indexActive !== index ? setIndexActive(index) : setIndexActive(0)
     }
 
-    // function handleChangeQuantityAdult(e, type) {
-    //     e.preventDefault()
-    //     if (type === '+') {
-    //         setValue('amount.adult', getVal)
-    //     }
-    //     if (type === '-') {
-    //         setValue('quantity', quantityWatch - 1)
-    //     }
-    // }
+    const totalAmount = useMemo(() => {
+        return amountWatch.adult + amountWatch.children
+    }, [amountWatch])
+
+    function handleChangeQuantityAdult(type) {
+        if (type === '+') {
+            console.log("clock")
+
+            if (totalAmount < 9)
+                setValue('amount.adult', amountWatch.adult + 1)
+        }
+        if (type === '-') {
+            if (totalAmount > 0)
+                setValue('amount.adult', amountWatch.adult - 1)
+        }
+    }
+
+    function handleChangeQuantityChildren(type) {
+        if (type === '+') {
+            console.log("clock")
+
+            if (totalAmount < 9)
+                setValue('amount.children', amountWatch.children + 1)
+        }
+        if (type === '-') {
+            if (totalAmount > 0)
+                setValue('amount.children', amountWatch.children - 1)
+        }
+    }
 
     return (
         <div className='relative'>
@@ -35,13 +52,13 @@ function SelectAmount({ index, setIndexActive, indexActive }) {
             >
                 <p className='text-[14px] flex items-center gap-1'>
                     <span className='text-primary'>
-                        {amount.adult === 0 ? 0 : `0${amount.adult}`}
+                        {amountWatch.adult === 0 ? 0 : `0${amountWatch.adult}`}
                     </span>
                     <span>Adult,</span>
                 </p>
                 <p className='text-[14px] flex items-center gap-1'>
                     <span className='text-primary'>
-                        {amount.children === 0 ? 0 : `0${amount.children}`}
+                        {amountWatch.children === 0 ? 0 : `0${amountWatch.children}`}
                     </span>
                     <span>Children</span>
                 </p>
@@ -58,17 +75,17 @@ function SelectAmount({ index, setIndexActive, indexActive }) {
                     <li className='select-option amount'>
                         <p className='text-[14px]'>Adult </p>
                         <div className='flex items-center'>
-                            <button type='button'>-</button>
-                            <input value={amount.adult} className='text-center w-[40px] h-[40px] outline-none' type='number' readOnly />
-                            <button type='button'>+</button>
+                            <button className={`p-1 outline-none ${(amountWatch.adult === 1 || totalAmount === 1) && "opacity-20"}`} disabled={amountWatch.adult === 1 || totalAmount === 1} onClick={() => handleChangeQuantityAdult("-")} type='button'>-</button>
+                            <input value={amountWatch.adult} className='text-center w-[40px] h-[40px] outline-none' type='number' readOnly />
+                            <button className={`p-1 outline-none ${(amountWatch.adult === 9 || totalAmount === 9) && "opacity-20"}`} disabled={amountWatch.adult === 9 || totalAmount === 9} onClick={() => handleChangeQuantityAdult("+")} type='button'>+</button>
                         </div>
                     </li>
                     <li className='select-option amount'>
                         <p className='text-[14px]'>Children </p>
                         <div className='flex items-center'>
-                            <button type='button'>-</button>
-                            <input value={amount.children} className='text-center w-[40px] h-[40px] outline-none' type='number' readOnly />
-                            <button type='button'>+</button>
+                            <button className={`p-1 outline-none ${(amountWatch.children === 0 || totalAmount === 0) && "opacity-20"}`} disabled={amountWatch.children === 0 || totalAmount === 0} onClick={() => handleChangeQuantityChildren("-")} type='button'>-</button>
+                            <input value={amountWatch.children} className='text-center w-[40px] h-[40px] outline-none' type='number' readOnly />
+                            <button className={`p-1 outline-none ${(amountWatch.children === 9 || totalAmount === 9) && "opacity-20"}`} disabled={amountWatch.children === 9 || totalAmount === 9} onClick={() => handleChangeQuantityChildren("+")} type='button'>+</button>
                         </div>
                     </li>
                     <li className='flex justify-end' onClick={handleOpenSelect}>

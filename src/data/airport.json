@@ -1,0 +1,27 @@
+[
+	{
+		"shorten": "DAD",
+		"place": "Da Nang",
+		"location": "Viet Nam"
+	},
+    {
+		"shorten": "SGN",
+		"place": "Ho Chi Minh",
+		"location": "Viet Nam"
+	},
+    {
+		"shorten": "HAN",
+		"place": "Hanoi",
+		"location": "Viet Nam"
+	},
+    {
+		"shorten": "SIN",
+		"place": "Singapore",
+		"location": "Singapore"
+	},
+    {
+		"shorten": "BKK",
+		"place": "Bangkok",
+		"location": "Thailand"
+	}
+]

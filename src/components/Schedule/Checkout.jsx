@@ -24,7 +24,7 @@ function Checkout({ flight }) {
                         </div>
                     </div>
                     <div className="flex gap-2 items-center">
-                        <div className="logo-img w-[30px] h-[30px] border border-black/20 w-full rounded-md p-1">
+                        <div className="logo-img w-[30px] h-[30px] border border-black/20 rounded-md p-1">
                             <img src={logo} alt={""} />
                         </div>
                         <div className="flex flex-col">

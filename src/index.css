@@ -7,7 +7,7 @@
 }
 
 .App {
-    @apply relative;
+    @apply relative; 
     -webkit-tap-highlight-color: transparent;
     font-family: Biennale;
 }

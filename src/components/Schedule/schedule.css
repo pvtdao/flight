@@ -1,0 +1,25 @@
+.schedule{
+    @apply pt-[80px] bg-white;
+    font-family: BiennaleRegular400;
+}
+
+.info{
+    @apply min-h-[80px]
+}
+
+.info .place-bold{
+    font-family: "BiennaleSemi600";
+}
+
+.info .type{
+    font-family: "BiennaleBold";
+}
+
+.btn-search{
+    font-family: "BiennaleSemi600";
+    @apply bg-secondary text-sm text-white w-max flex items-center gap-2 px-4 py-[10px] rounded-xl cursor-pointer;
+}
+
+.schedule-card{
+    font-family: "BiennaleSemi600";
+}

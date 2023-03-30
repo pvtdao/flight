@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import UsFlag from '../../assets/icons/UsFlag'
 import VnFlag from '../../assets/icons/VnFlag'
 import "./header.css"
 import { CgMenuRight, CgClose } from "react-icons/cg";
+import { useLocation } from 'react-router-dom';
 
 const MENU_ITEM = [
     "Promotion",
@@ -15,6 +16,23 @@ const MENU_ITEM = [
 function Header() {
     const [language, setLanguage] = useState("vi")
     const [isOpen, setIsOpen] = useState(false)
+    const [shadow, setShadow] = useState(false)
+
+    const { pathname } = useLocation()
+
+
+    const transitionNavBar = () => {
+        if (window.scrollY > 50) setShadow(true)
+        else setShadow(false)
+    }
+
+    useEffect(() => {
+        if (pathname === "/")
+            window.addEventListener('scroll', transitionNavBar)
+
+        else setShadow(true)
+        return () => window.removeEventListener('scroll', transitionNavBar)
+    }, [pathname])
 
     function handleSetLanguage(value) {
         setLanguage(value)
@@ -25,7 +43,7 @@ function Header() {
     }
 
     return (
-        <header className='header h-20 fixed w-full flex items-center z-50'>
+        <header className={`header h-20 fixed w-full flex items-center z-50 ${shadow && "shadow text-white bg-primary"}`}>
             <div className="header-container container">
                 <div className="logo">
                     <a href="/" className="text font-bold text-[22px] md:text-[28px]">Baycungban</a>
@@ -37,15 +55,15 @@ function Header() {
                 <ul className={`menu ${isOpen ? "menu-active" : "menu-inactive"}`}>
                     {MENU_ITEM.map((item, idx) => {
                         return <li
-                            className='menu-item'
+                            className={`menu-item ${shadow && "lg:hover:bg-white/10"}`}
                             key={idx}
                             onClick={() => handleOpenMenu(false)}>
-                            <a className='py-[10px] px-4' href={`/${item.toLowerCase()}`}>{item}</a>
+                            <a className={`py-[10px] px-4 ${shadow && "lg:text-white"}`} href={`/${item.toLowerCase()}`}>{item}</a>
                         </li>
                     })}
                 </ul>
                 <div>
-                    <button className="booking">Booking now</button>
+                    <button className={`booking ${shadow && "text-primary bg-white"}`}>Booking now</button>
                 </div>
                 <div
                     className='cursor-pointer flex md:items-center z-10 lg:hidden'

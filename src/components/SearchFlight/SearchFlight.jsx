@@ -6,12 +6,22 @@ import Place from './Place'
 import "./search-flight.css"
 import SelectAmount from './SelectAmount'
 import SelectClassSeat from './SelectClassSeat'
+import * as yup from 'yup'
+import { yupResolver } from '@hookform/resolvers/yup'
+import { useNavigate } from 'react-router-dom'
 
-function SearchFlight() {
+function SearchFlight({ handleShow }) {
     const [indexActive, setIndexActive] = useState(0)
+    const navigate = useNavigate()
+
+    const schema = yup.object({
+        to: yup.object({
+            place: yup.string().required("")
+        })
+    })
 
     const defaultValues = {
-        type: "oneway",
+        type: "Oneway",
         amount: {
             adult: 1,
             children: 0
@@ -32,12 +42,22 @@ function SearchFlight() {
     }
 
     const methods = useForm({
-        defaultValues
+        defaultValues,
+        resolver: yupResolver(schema)
     })
 
     function handleSearchFlight(values) {
         console.log("🚀 values:", values)
+        if (!localStorage.getItem("ticket-flight")) localStorage.setItem("ticket-flight", JSON.stringify(values))
+        localStorage.setItem("ticket-flight", JSON.stringify(values))
 
+        if (handleShow) {
+            handleShow()
+        } else {
+            navigate({
+                pathname: "/flight-schedule"
+            })
+        }
     }
 
     return (

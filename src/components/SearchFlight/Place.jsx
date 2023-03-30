@@ -12,11 +12,11 @@ function Place() {
 
     return (
         <div className='flex flex-col sm:flex-row lg:flex-col xl:flex-row  items-center justify-between w-full lg:w-auto'>
-            <CardPlace getValues={getValues} setValue={setValue} index={1} indexActive={indexActive} setIndexActive={setIndexActive} data={fromWatch} from/>
+            <CardPlace index={1} indexActive={indexActive} setIndexActive={setIndexActive} data={fromWatch} from/>
             <div className="">
                 <BiTransferAlt size="30px" />
             </div>
-            <CardPlace getValues={getValues} setValue={setValue} index={2} indexActive={indexActive} setIndexActive={setIndexActive} data={toWatch}/>
+            <CardPlace index={2} indexActive={indexActive} setIndexActive={setIndexActive} data={toWatch}/>
         </div>
     )
 }

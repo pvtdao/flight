@@ -2,9 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+.header{
+    transition: background .3s linear;
+}
+
 .header-container {
     @apply mx-auto flex justify-between;
     font-family: 'BiennaleLight300';
+    transition: color .3s linear;
 }
 
 .logo {
@@ -34,7 +39,7 @@
 }
 
 .menu-item {
-    @apply flex items-center text-xl hover:underline rounded-xl
+    @apply flex items-center text-xl hover:underline md:hover:no-underline rounded-xl
         lg:text-sm lg:h-full lg:hover:bg-primary/[.1];
     transition: all .3s ease-in-out;
 }

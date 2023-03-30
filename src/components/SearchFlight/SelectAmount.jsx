@@ -20,8 +20,6 @@ function SelectAmount({ index, setIndexActive, indexActive }) {
 
     function handleChangeQuantityAdult(type) {
         if (type === '+') {
-            console.log("clock")
-
             if (totalAmount < 9)
                 setValue('amount.adult', amountWatch.adult + 1)
         }
@@ -33,8 +31,6 @@ function SelectAmount({ index, setIndexActive, indexActive }) {
 
     function handleChangeQuantityChildren(type) {
         if (type === '+') {
-            console.log("clock")
-
             if (totalAmount < 9)
                 setValue('amount.children', amountWatch.children + 1)
         }

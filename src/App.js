@@ -1,7 +1,8 @@
+import { Route, Routes } from 'react-router-dom'
 import './App.css'
 import Header from './components/Header/Header'
 import Hero from './components/Hero/Hero'
-import SearchFlight from './components/SearchFlight/SearchFlight'
+import Schedule from './components/Schedule/Schedule'
 
 function App() {
 	return (
@@ -15,7 +16,10 @@ function App() {
 			</div>
 			<div className='App'>
 				<Header />
-				<Hero />
+				<Routes>
+					<Route path='/' element={<Hero />}/>
+					<Route path='/flight-schedule' element={<Schedule />}/>
+				</Routes>
 			</div>
 		</>
 	)

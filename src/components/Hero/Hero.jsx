@@ -12,7 +12,7 @@ function Hero() {
                     <p className='content-text'>you <span className='text-primary'>flying</span> to ...</p>
                 </div>
 
-                <div className='absolute left-0 -bottom-3/4 sm:-bottom-[50px] w-full'>
+                <div className='absolute left-0 -bottom-3/4 sm:-bottom-[50px] lg:-bottom-[15%] xl:-bottom-[50px] w-full'>
                     <SearchFlight />
                 </div>
             </div>

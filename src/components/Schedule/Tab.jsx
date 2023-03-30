@@ -106,7 +106,7 @@ function FlightDetail({ data }) {
             </div>
             <div className="flex flex-col gap-[10px] flex-1">
                 <div className="flex gap-2 items-center">
-                    <div className="logo-img w-[30px] h-[30px] border border-black/20 w-full rounded-md p-1">
+                    <div className="logo-img w-[30px] h-[30px] border border-black/20 rounded-md p-1">
                         <img src={airline.logo} alt={""} />
                     </div>
                     <div className="flex flex-col">
@@ -145,7 +145,7 @@ function FareInfo({ data }) {
             <div className=" w-[200px]">
                 <h1 className='mb-[15px]'>CONDITIONS</h1>
                 <div className="flex gap-2 items-center">
-                    <div className="logo-img w-[30px] h-[30px] border border-black/20 w-full rounded-md p-1">
+                    <div className="logo-img w-[30px] h-[30px] border border-black/20 rounded-md p-1">
                         <img src={airline.logo} alt={""} />
                     </div>
                     <div className="flex flex-col">

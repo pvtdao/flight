@@ -8,16 +8,20 @@ const FILTER = [
         name: "transit",
         option: [
             {
+                title: "All Transit",
+                value: "all"
+            },
+            {
                 title: "Straight",
-                value: "0"
+                value: "Straight"
             },
             {
                 title: "Transit",
-                value: "1"
+                value: "Transit"
             },
             {
                 title: "2+ Transit",
-                value: "2"
+                value: "2+ Transit"
             }
         ]
     },
@@ -38,6 +42,10 @@ const FILTER = [
         name: "airline",
         option: [
             {
+                title: "All Airline",
+                value: "all"
+            },
+            {
                 title: "Vietname Airline",
                 value: "VNA"
             },
@@ -48,7 +56,7 @@ const FILTER = [
             {
                 title: "Vietjet",
                 value: "VJA"
-            }
+            },
         ]
     },
     {
@@ -56,11 +64,11 @@ const FILTER = [
         option: [
             {
                 title: "Low",
-                value: "0"
+                value: "low"
             },
             {
                 title: "High",
-                value: "1"
+                value: "price"
             }
         ]
     }

@@ -9,12 +9,12 @@ const MENU_CLASS_SEAT = [
 ]
 
 function SelectClassSeat({ index, setIndexActive, indexActive }) {
-    const { control, setValue, getValues } = useFormContext()
+    const { control, setValue } = useFormContext()
     const seatClassWatch = useWatch({ control, name: 'seatClass' })
 
     const isOpen = useMemo(() => {
         return indexActive === index ? true : false
-    }, [indexActive])
+    }, [indexActive, index])
 
     function handleOpenSelect() {
         return indexActive !== index ? setIndexActive(index) : setIndexActive(0)

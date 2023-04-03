@@ -3,7 +3,7 @@ import { useFormContext } from 'react-hook-form'
 import AIRPORT from "../../data/airport.json"
 
 function CardPlace({ data, from = false, isRight = false, index, indexActive, setIndexActive }) {
-    const { formState: { errors }, setValue, getValues, getFieldState, clearErrors } = useFormContext()
+    const { setValue, getValues, getFieldState, clearErrors } = useFormContext()
     const isToError = !!getFieldState("to").error
 
     const isSelect = useMemo(() => {

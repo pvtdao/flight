@@ -15,7 +15,7 @@ function DateFlight() {
             setValue("return", departWatch)
         }
 
-    }, [departWatch])
+    }, [departWatch, returnWatch])
 
 
     return (

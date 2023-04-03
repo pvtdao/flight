@@ -9,15 +9,22 @@ import SearchFlight from '../SearchFlight/SearchFlight';
 function Schedule() {
     const DATA_LOCOL = localStorage.getItem("ticket-flight")
     const [isOpen, setIsOpen] = useState(false)
-    console.log("🚀 ~ file: Schedule.jsx:12 ~ Schedule ~ isOpen:", isOpen)
+
     const DATA = JSON.parse(DATA_LOCOL)
+
+    const data = {
+        ...DATA,
+        depart: Date.parse(DATA.depart),
+        return: Date.parse(DATA.return),
+    }
+
     const { type,
         amount,
         from,
-        depart,
+        depart: depart,
         return: returnFlight,
         seatClass, to
-    } = DATA
+    } = data
 
     function handleShow() {
         setIsOpen(!isOpen)
@@ -58,7 +65,7 @@ function Schedule() {
                 </div>
                 <div className="content-container bg-[#E5E5E5]">
                     <div className="container pb-5 mx-auto">
-                        {!isOpen && <Content data={DATA} />}
+                        {!isOpen && <Content data={data} />}
                     </div>
                 </div>
 
@@ -72,7 +79,7 @@ function Schedule() {
                         className='px-3 py-2 text-sm rounded-xl text-white bg-primary'>
                         Close
                     </button>
-                    <SearchFlight handleShow={handleShow}/>
+                    <SearchFlight handleShow={handleShow} />
                 </div>
             </div>
         </>

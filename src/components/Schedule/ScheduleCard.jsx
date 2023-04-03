@@ -22,9 +22,30 @@ function ScheduleCard({ flight, airline, time, index, indexActive, setIndexActiv
             timeTravel: flight.timeTravel,
             price: flight.price,
             logo: airline.logo,
-            name: airline.name,  
+            name: airline.name,
+            transit: flight.transit
         })
     }
+
+    const typeTransit = useMemo(() => {
+        let value
+        switch (flight.transit) {
+            case "Straight":
+                value = "Direct"
+                break;
+            case "Transit":
+                value = "Transit"
+                break;
+            case "2+ Transit":
+                value = "2+ Transit"
+                break;
+
+            default:
+                break;
+        }
+
+        return value
+    }, [flight])
 
 
     return (
@@ -49,7 +70,7 @@ function ScheduleCard({ flight, airline, time, index, indexActive, setIndexActiv
                                 <div className="h-[1px] w-full lg:w-[70px] border-t border-primary/50"></div>
                                 <div className="w-[7px] h-[7px] rounded-full bg-primary"></div>
                             </div>
-                            <p>Direct</p>
+                            <p>{typeTransit}</p>
                         </div>
                         <div className="flex flex-col items-center gap-1 w-auto">
                             <p>{time.end}</p>
@@ -71,8 +92,9 @@ function ScheduleCard({ flight, airline, time, index, indexActive, setIndexActiv
                             }
                         </div>
                         <div className="flex flex-col items-start gap-1 w-full sm:w-auto">
-                            {flight.price.special && <p className='text-black/20 line-through'>{flight.price.special}</p>}
-                            <p className='text-secondary'>{flight.price.originalPrice}</p>
+                            {flight.price.special && <p className='text-black/20 line-through'>{flight.price.originalPrice}</p>}
+                            {!flight.price.special && <p className=''>{flight.price.originalPrice}</p>}
+                            <p className='text-secondary'>{flight.price.special}</p>
                         </div>
                     </div>
                 </div>

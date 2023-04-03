@@ -1,14 +1,14 @@
-import React, { useMemo, useState } from 'react'
+import React, { useMemo } from 'react'
 import { useFormContext, useWatch } from 'react-hook-form'
 import { RiArrowDownSFill, RiArrowUpSFill } from "react-icons/ri";
 
 function SelectAmount({ index, setIndexActive, indexActive }) {
-    const { control, setValue, getValues } = useFormContext()
+    const { control, setValue } = useFormContext()
     const amountWatch = useWatch({ control, name: 'amount' })
 
     const isOpen = useMemo(() => {
         return indexActive === index ? true : false
-    }, [indexActive])
+    }, [indexActive, index])
 
     function handleOpenSelect() {
         return indexActive !== index ? setIndexActive(index) : setIndexActive(0)

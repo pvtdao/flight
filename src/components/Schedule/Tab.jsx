@@ -71,6 +71,7 @@ export default Tab
 
 function FlightDetail({ data }) {
     const { airline, time, flight, userData } = data
+    console.log("🚀 ~ file: Tab.jsx:74 ~ FlightDetail ~ userData:", userData)
 
     return (
         <div className='flex flex-col sm:flex-row gap-[50px]'>
@@ -78,12 +79,12 @@ function FlightDetail({ data }) {
                 <div className="flex flex-col justify-between">
                     <div className="">
                         <p>{time.start}</p>
-                        <p style={{ fontFamily: "BiennaleLight300" }} class="text-[12px]">{format(new Date(), "ccc, dd LLL, yyyy")}</p>
+                        <p style={{ fontFamily: "BiennaleLight300" }} className="text-[12px]">{format(userData.depart, "ccc, dd LLL, yyyy")}</p>
                     </div>
                     <p style={{ fontFamily: "BiennaleLight300" }}>{flight.timeTravel}</p>
                     <div className="">
                         <p>{time.end}</p>
-                        <p style={{ fontFamily: "BiennaleLight300" }} class="text-[12px]">{format(new Date(), "ccc, dd LLL, yyyy")}</p>
+                        <p style={{ fontFamily: "BiennaleLight300" }} className="text-[12px]">{format(userData.depart, "ccc, dd LLL, yyyy")}</p>
                     </div>
                 </div>
                 <div className="h-full">
@@ -96,11 +97,11 @@ function FlightDetail({ data }) {
                 <div className="flex flex-col justify-between">
                     <div className="">
                         <p>{flight.from.place} (${flight.from.shorten})</p>
-                        <p style={{ fontFamily: "BiennaleLight300" }} class="text-[12px]">{flight.from.location}</p>
+                        <p style={{ fontFamily: "BiennaleLight300" }} className="text-[12px]">{flight.from.location}</p>
                     </div>
                     <div className="">
                         <p>{flight.to.place} (${flight.to.shorten})</p>
-                        <p style={{ fontFamily: "BiennaleLight300" }} class="text-[12px]">{flight.to.location}</p>
+                        <p style={{ fontFamily: "BiennaleLight300" }} className="text-[12px]">{flight.to.location}</p>
                     </div>
                 </div>
             </div>
@@ -111,7 +112,7 @@ function FlightDetail({ data }) {
                     </div>
                     <div className="flex flex-col">
                         <p className="text-sm capitalize">{airline.name}</p>
-                        <p style={{ fontFamily: "BiennaleLight300" }} class="text-[12px] -mt-1">{userData.seatClass}</p>
+                        <p style={{ fontFamily: "BiennaleLight300" }} className="text-[12px] -mt-1">{userData.seatClass}</p>
                     </div>
                 </div>
                 <div style={{ fontFamily: "BiennaleLight300" }} className="w-full h-full rounded-xl p-[15px] bg-[#F4F2F9] grid grid:cols-1 gap-1 lg:grid-cols-2">
@@ -140,6 +141,8 @@ function FareInfo({ data }) {
     //     console.log(flight.price.special.split(" vnd")[0].split(".").join(""))
     // }
 
+    const payPrice = !flight.price.special ? 0 : flight.price.originalPrice.split(" vnd")[0].split(".").join("") - flight.price.special.split(" vnd")[0].split(".").join("")
+
     return (
         <div className="flex flex-col lg:flex-row gap-[50px]">
             <div className=" w-[200px]">
@@ -150,7 +153,7 @@ function FareInfo({ data }) {
                     </div>
                     <div className="flex flex-col">
                         <p className="text-sm capitalize">{airline.name}</p>
-                        <p style={{ fontFamily: "BiennaleLight300" }} class="text-[12px] -mt-1">{userData.seatClass}</p>
+                        <p style={{ fontFamily: "BiennaleLight300" }} className="text-[12px] -mt-1">{userData.seatClass}</p>
                     </div>
                 </div>
                 <div style={{ fontFamily: "BiennaleLight300" }} className="mt-[10px] w-full justify-between flex gap-2 items-center">
@@ -178,7 +181,7 @@ function FareInfo({ data }) {
                         <p><span style={{ fontFamily: "BiennaleBold" }} className='text-primary'>{flight.price.originalPrice}</span></p>
                         <p>Included</p>
                         <p>{flight.price.special ? flight.price.special : 0}</p>
-                        <p>{!flight.price.special ? 0 : flight.price.originalPrice.split(" vnd")[0].split(".").join("") - flight.price.special.split(" vnd")[0].split(".").join("")} vnd</p>
+                        <p>{payPrice} vnd</p>
                     </div>
                 </div>
                 <div className="w-full h-[1px] border-t border-black/20"></div>

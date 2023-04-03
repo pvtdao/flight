@@ -1,9 +1,31 @@
 import { format } from 'date-fns'
-import React from 'react'
+import React, { useMemo } from 'react'
 import { Link } from 'react-router-dom'
 
 function Checkout({ flight }) {
-    const { depart, return: returnDay, from, to, time, logo, name: airlineName, timeTravel, price } = flight
+    const { depart, return: returnDay, from, to, time, logo, name: airlineName, timeTravel, price, transit } = flight
+    console.log("🚀 ~ file: Checkout.jsx:7 ~ Checkout ~ transit:", transit)
+
+    const typeTransit = useMemo(() => {
+        let value
+        switch (transit) {
+            case "Straight":
+                value = "Direct"
+                break;
+            case "Transit":
+                value = "Transit"
+                break;
+            case "2+ Transit":
+                value = "2+ Transit"
+                break;
+
+            default:
+                break;
+        }
+
+        return value
+    }, [transit])
+
     return (
         <aside className='rounded-xl'>
             <div className='bg-white rounded-t-xl'>
@@ -29,7 +51,7 @@ function Checkout({ flight }) {
                         </div>
                         <div className="flex flex-col">
                             <p style={{ fontFamily: "BiennaleBold" }} className="text-sm capitalize">{airlineName}</p>
-                            <Link href="/" style={{ fontFamily: "BiennaleLight300" }} class="text-[14px] text-primary -mt-1">Detail</Link>
+                            <Link href="/" style={{ fontFamily: "BiennaleLight300" }} className="text-[14px] text-primary -mt-1">Detail</Link>
                         </div>
                     </div>
                     <div className="timeline flex items-center gap-5 text-sm w-full lg:w-auto lg:flex-[unset]">
@@ -44,7 +66,7 @@ function Checkout({ flight }) {
                                 <div className="h-[1px] w-full lg:w-[70px] border-t border-primary/50"></div>
                                 <div className="w-[7px] h-[7px] rounded-full bg-primary"></div>
                             </div>
-                            <p>Direct</p>
+                            <p>{typeTransit}</p>
                         </div>
                         <div className="flex flex-col items-center gap-1 w-auto">
                             <p>{time.end}</p>

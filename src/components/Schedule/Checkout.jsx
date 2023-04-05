@@ -3,8 +3,9 @@ import React, { useMemo } from 'react'
 import { Link } from 'react-router-dom'
 
 function Checkout({ flight }) {
-    const { depart, return: returnDay, from, to, time, logo, name: airlineName, timeTravel, price, transit } = flight
-    console.log("🚀 ~ file: Checkout.jsx:7 ~ Checkout ~ transit:", transit)
+    const { depart, return: returnDay, from, to, time, logo, name: airlineName, timeTravel, price, transit, amount } = flight
+
+    const totalAmount = amount.adult + amount.children
 
     const typeTransit = useMemo(() => {
         let value
@@ -25,6 +26,29 @@ function Checkout({ flight }) {
 
         return value
     }, [transit])
+
+    function parsePrice(price) {
+        let stringPrice = price.toString()
+        let formatPrice = []
+
+        while (stringPrice.length > 3) {
+            let itemPrice = stringPrice.slice(-3)
+            stringPrice = stringPrice.substring(0, stringPrice.length - 3)
+            formatPrice.unshift(itemPrice)
+        }
+
+        formatPrice.unshift(stringPrice)
+
+        return formatPrice.join(".")
+    }
+
+    function getNumberPrice(price) {
+        return price.split(" vnd")[0].split(".").join("")
+    }
+
+    function totalPrice(priceUnFormat, amount) {
+        return `${parsePrice(getNumberPrice(priceUnFormat) * amount)} vnd`
+    }
 
     return (
         <aside className='rounded-xl'>
@@ -89,7 +113,7 @@ function Checkout({ flight }) {
             <div className="bg-[#F8F8F8] rounded-b-xl">
                 <div className="px-[15px] py-[14px]">
                     <p>Subtotal</p>
-                    <p className="text-secondary">{price.special ? price.special : price.originalPrice}</p>
+                    <p className="text-secondary">{price.special ? totalPrice(price.special, totalAmount) : totalPrice(price.originalPrice, totalAmount)}</p>
                 </div>
             </div>
         </aside>

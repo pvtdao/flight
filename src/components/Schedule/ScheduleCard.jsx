@@ -14,8 +14,9 @@ function ScheduleCard({ flight, airline, time, index, indexActive, setIndexActiv
 
     function handleChooseTicket() {
         setFlight({
-            depart: new Date(),
-            return: new Date(),
+            amount: data.amount,
+            depart: data.depart,
+            return: data.return,
             from: flight.from,
             to: flight.to,
             time: time,

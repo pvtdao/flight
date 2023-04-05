@@ -11,7 +11,7 @@ function DateFlight() {
     const [indexActive, setIndexActive] = useState(0)
 
     useEffect(() => {
-        if(compareDesc(departWatch, returnWatch) === -1){
+        if (compareDesc(departWatch, returnWatch) === -1) {
             setValue("return", departWatch)
         }
 

@@ -26,19 +26,6 @@ const FILTER = [
         ]
     },
     {
-        name: "time",
-        option: [
-            {
-                title: "Sooner",
-                value: "0"
-            },
-            {
-                title: "Later",
-                value: "1"
-            }
-        ]
-    },
-    {
         name: "airline",
         option: [
             {

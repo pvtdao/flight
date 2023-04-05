@@ -48,8 +48,10 @@ function SearchFlight({ handleShow }) {
 
     function handleSearchFlight(values) {
         console.log("🚀 values:", values)
-        if (!localStorage.getItem("ticket-flight")) localStorage.setItem("ticket-flight", JSON.stringify(values))
-        localStorage.setItem("ticket-flight", JSON.stringify(values))
+
+        const data = { ...values, type: values.type.toLowerCase() }
+        if (!localStorage.getItem("ticket-flight")) localStorage.setItem("ticket-flight", JSON.stringify(data))
+        localStorage.setItem("ticket-flight", JSON.stringify(data))
 
         if (handleShow) {
             handleShow()

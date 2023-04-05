@@ -1,5 +1,5 @@
 import { compareDesc, isSameDay } from 'date-fns';
-import React, { useState } from 'react'
+import React from 'react'
 import { Calendar } from 'react-calendar';
 import DatePicker from 'react-date-picker';
 import 'react-date-picker/dist/DatePicker.css';

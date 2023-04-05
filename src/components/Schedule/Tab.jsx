@@ -71,7 +71,6 @@ export default Tab
 
 function FlightDetail({ data }) {
     const { airline, time, flight, userData } = data
-    console.log("🚀 ~ file: Tab.jsx:74 ~ FlightDetail ~ userData:", userData)
 
     return (
         <div className='flex flex-col sm:flex-row gap-[50px]'>
@@ -134,14 +133,34 @@ function FlightDetail({ data }) {
 
 function FareInfo({ data }) {
     const { airline, time, flight, userData } = data
+    const { amount } = userData
 
-    // if (flight.price.special) {
-    //     console.log(flight.price.originalPrice.split(" vnd")[0].split(".").join("") - flight.price.special.split(" vnd")[0].split(".").join(""))
-    //     console.log(flight.price.originalPrice.split(" vnd")[0].split(".").join(""))
-    //     console.log(flight.price.special.split(" vnd")[0].split(".").join(""))
-    // }
+    const totalAmount = amount.adult + amount.children
 
-    const payPrice = !flight.price.special ? 0 : flight.price.originalPrice.split(" vnd")[0].split(".").join("") - flight.price.special.split(" vnd")[0].split(".").join("")
+    const discountPrice = !flight.price.special ? 0 : flight.price.originalPrice.split(" vnd")[0].split(".").join("") - flight.price.special.split(" vnd")[0].split(".").join("")
+
+    function parsePrice(price) {
+        let stringPrice = price.toString()
+        let formatPrice = []
+
+        while (stringPrice.length > 3) {
+            let itemPrice = stringPrice.slice(-3)
+            stringPrice = stringPrice.substring(0, stringPrice.length - 3)
+            formatPrice.unshift(itemPrice)
+        }
+
+        formatPrice.unshift(stringPrice)
+
+        return formatPrice.join(".")
+    }
+
+    function getNumberPrice(price) {
+        return price.split(" vnd")[0].split(".").join("")
+    }
+
+    function totalPrice(priceUnFormat, amount) {
+        return `${parsePrice(getNumberPrice(priceUnFormat) * amount)} vnd`
+    }
 
     return (
         <div className="flex flex-col lg:flex-row gap-[50px]">
@@ -181,7 +200,7 @@ function FareInfo({ data }) {
                         <p><span style={{ fontFamily: "BiennaleBold" }} className='text-primary'>{flight.price.originalPrice}</span></p>
                         <p>Included</p>
                         <p>{flight.price.special ? flight.price.special : 0}</p>
-                        <p>{payPrice} vnd</p>
+                        <p>{parsePrice(discountPrice)} vnd</p>
                     </div>
                 </div>
                 <div className="w-full h-[1px] border-t border-black/20"></div>
@@ -190,7 +209,7 @@ function FareInfo({ data }) {
                         <p>You pay</p>
                     </div>
                     <div className="gap-1 flex flex-col">
-                        <p><span style={{ fontFamily: "BiennaleBold" }} className='text-secondary'>{flight.price.special ? flight.price.special : flight.price.originalPrice}</span></p>
+                        <p><span style={{ fontFamily: "BiennaleBold" }} className='text-secondary'>{flight.price.special ? totalPrice(flight.price.special, totalAmount) : totalPrice(flight.price.originalPrice, totalAmount)}</span></p>
                     </div>
                 </div>
             </div>

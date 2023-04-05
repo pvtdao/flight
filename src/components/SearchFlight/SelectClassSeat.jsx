@@ -20,7 +20,7 @@ function SelectClassSeat({ index, setIndexActive, indexActive }) {
         return indexActive !== index ? setIndexActive(index) : setIndexActive(0)
     }
 
-    function handleChooseClass (classType) {
+    function handleChooseClass(classType) {
         setValue("seatClass", classType)
         handleOpenSelect()
     }

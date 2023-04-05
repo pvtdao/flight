@@ -1,10 +1,20 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import Checkout from './Checkout'
 import Filter from './Filter'
 import ScheduleCard from './ScheduleCard'
 import AIRLINE from '../../data/flight'
+import { getTime, isSameDay } from 'date-fns'
 
 function Content({ data }) {
+    const {
+        type,
+        from,
+        depart,
+        return: returnFlight,
+        seatClass, to,
+        amount
+    } = data
+
     const [indexActive, setIndexActive] = useState(0)
     const [filterState, setFilterState] = useState({
         transit: "all",
@@ -53,7 +63,7 @@ function Content({ data }) {
     }
 
     return (
-        <section className='content pt-4 relative'>
+        <section className='content pt-4 relative min-h-[80vh]'>
             <div className={`pt-4 lg:pt-0 w-full ${flight && 'lg:w-[calc(75%-15px)]'}  lg:ml-0`}>
                 {flight &&
                     <div className="h-full w-full lg:w-[calc(25%-15px)] lg:absolute top-0 right-0 pb-4 lg:pb-0 lg:pt-4">
@@ -66,12 +76,12 @@ function Content({ data }) {
                 <div className="flight-list mt-[5px] w-full">
                     {
                         allFlight
-                            // .filter(item =>
-                            //     isSameDay(item.date, depart)
-                            //     && item.from.shorten === from.shorten
-                            //     && item.to.shorten === to.shorten
-                            //     && item.type === type
-                            //     && item.seatClass === seatClass)
+                            .filter(item =>
+                                isSameDay(item.date, depart)
+                                && item.from.shorten === from.shorten
+                                && item.to.shorten === to.shorten
+                                && item.type === type
+                                && item.seatClass === seatClass)
                             .filter((item) => filterState.transit === "all" ? item : item.transit === filterState.transit)
                             .sort(filterState.price === "low" ? low : high)
                             .map((flight, idx) => {

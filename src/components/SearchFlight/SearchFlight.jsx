@@ -28,14 +28,14 @@ function SearchFlight({ handleShow }) {
         },
         seatClass: "Economy",
         from: {
-            shorten: "DAD",
-            place: "Da Nang",
-            location: "Viet Nam"
+            shorten: 'SGN',
+            place: 'Ho Chi Minh',
+            location: 'Viet Nam'
         },
         to: {
-            shorten: "",
-            place: "",
-            location: ""
+            shorten: 'DAD',
+            place: 'Da Nang',
+            location: 'Viet Nam'
         },
         depart: new Date(),
         return: new Date()

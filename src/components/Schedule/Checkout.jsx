@@ -85,9 +85,9 @@ function Checkout({ flight }) {
                         </div>
                         <div style={{ fontFamily: "BiennaleLight300" }} className="flex flex-col items-center w-full">
                             <p>{timeTravel}</p>
-                            <div className="flex items-center w-full">
+                            <div className="flex items-center w-full justify-between">
                                 <div className="w-[7px] h-[7px] rounded-full border border-primary"></div>
-                                <div className="h-[1px] w-full lg:w-[70px] border-t border-primary/50"></div>
+                                <div className="h-[1px] w-full border-t border-primary/50"></div>
                                 <div className="w-[7px] h-[7px] rounded-full bg-primary"></div>
                             </div>
                             <p>{typeTransit}</p>
